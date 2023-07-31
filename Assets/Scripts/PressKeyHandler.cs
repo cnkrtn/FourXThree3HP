@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PressKeyHandler : MonoBehaviour
@@ -13,6 +14,7 @@ public class PressKeyHandler : MonoBehaviour
   private AudioManager _audioManager;
   private GameManager _gameManager;
   public List<AudioClip> list;
+  private float timer;
 
   private void Awake()
   {
@@ -23,8 +25,10 @@ public class PressKeyHandler : MonoBehaviour
 
   private void Update()
   {
+    timer += Time.deltaTime;
     if (Input.GetKeyDown((key)))
     {
+      timer = 0;
       ColorChangeOnPress(_button.colors.pressedColor);
       _button.onClick?.Invoke();
     }
@@ -32,6 +36,17 @@ public class PressKeyHandler : MonoBehaviour
     {
       ColorChangeOnPress(_button.colors.normalColor);
     }
+
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      SceneManager.LoadScene(0);
+    }
+
+    if (timer >= 50)
+    {
+      SceneManager.LoadScene(0);
+    }
+    
   }
 
   private void ColorChangeOnPress(Color color)
