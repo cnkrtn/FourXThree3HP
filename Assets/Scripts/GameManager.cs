@@ -28,8 +28,8 @@ public class GameManager : MonoBehaviour
         CreateGroup(seagullGroupCoordinates,seagullButtonList,seagullGroup);
         CreateGroup(seaLionGroupCoordinates,seaLionButtonList,seaLionGroup);
         
-        var shuffledList = groupList.OrderBy(x => Random.value).ToList();
-        SelectGroup(shuffledList);
+        //var shuffledList = groupList.OrderBy(x => Random.value).ToList();
+        SelectGroup(groupList);
     }
 
     private void CreateGroup(List<Vector3Int> coordinates,List<AudioClip> buttons,List<AudioClip> group)
