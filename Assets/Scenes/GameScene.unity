@@ -3045,8 +3045,8 @@ MonoBehaviour:
   - {fileID: 0}
   groupList:
   - {fileID: 362549238385994373}
-  - {fileID: 6176938458203018895}
   - {fileID: 6176938460064244848}
+  - {fileID: 6176938458203018895}
   whaleGroupCoordinates:
   - {x: 0, y: 2, z: 9}
   - {x: 2, y: 8, z: 11}
