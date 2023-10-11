@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
@@ -12,29 +13,60 @@ public class GameManager : MonoBehaviour
     public List<AudioClip> whaleButtonList, seagullButtonList, seaLionButtonList;
     public List<Transform> groupList;
     public List<Vector3Int> whaleGroupCoordinates, seagullGroupCoordinates, seaLionGroupCoordinates;
+    public float timer2;
+    private float timer;
+    private int reloadCount;
     
-
-    
-
-    
-   
-
     private void Awake()
     {
-        
-        //CreateGroups();
+        Init();
+    }
 
-        CreateGroup(whaleGroupCoordinates,whaleButtonList,whaleGroup);
-        CreateGroup(seagullGroupCoordinates,seagullButtonList,seagullGroup);
-        CreateGroup(seaLionGroupCoordinates,seaLionButtonList,seaLionGroup);
-        
+    public void Init()
+    {
+        var index = Random.Range(0, whaleGroupCoordinates.Count);
+        CreateGroup(whaleGroupCoordinates,whaleButtonList,whaleGroup,index);
+        whaleGroupCoordinates.Remove(whaleGroupCoordinates[index]);
+        var index2 = Random.Range(0, whaleGroupCoordinates.Count);
+        CreateGroup(seagullGroupCoordinates,seagullButtonList,seagullGroup,index2);
+        seagullGroupCoordinates.Remove(seagullGroupCoordinates[index2]);
+        var index3 = Random.Range(0, whaleGroupCoordinates.Count);
+        CreateGroup(seaLionGroupCoordinates,seaLionButtonList,seaLionGroup,index3);
+        seaLionGroupCoordinates.Remove(seaLionGroupCoordinates[index3]);
         //var shuffledList = groupList.OrderBy(x => Random.value).ToList();
         SelectGroup(groupList);
     }
-
-    private void CreateGroup(List<Vector3Int> coordinates,List<AudioClip> buttons,List<AudioClip> group)
+    
+    private void Update()
     {
-        var index = Random.Range(0, coordinates.Count);
+        timer += Time.deltaTime;
+        timer2 += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.Period))
+        {
+            reloadCount++;
+            if (reloadCount >2)
+            {
+                SceneManager.LoadScene(0);
+            }
+            else
+            {
+                Init();
+            }
+        }
+
+        if (timer > 500)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if (timer2 > 120)
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    private void CreateGroup(List<Vector3Int> coordinates,List<AudioClip> buttons,List<AudioClip> group,int index)
+    {
         var x = coordinates[index].x;
         var y = coordinates[index].y;
         var z = coordinates[index].z;
@@ -81,6 +113,10 @@ public class GameManager : MonoBehaviour
 
     private void CreateButtonLists(int x, int y, int z, List<AudioClip> buttons, List<AudioClip> group)
     {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i]=group[1];
+        }
         for (var i = 0; i < 3; i++)
         {
             switch (i)
