@@ -27,10 +27,10 @@ public class GameManager : MonoBehaviour
         var index = Random.Range(0, whaleGroupCoordinates.Count);
         CreateGroup(whaleGroupCoordinates,whaleButtonList,whaleGroup,index);
         whaleGroupCoordinates.Remove(whaleGroupCoordinates[index]);
-        var index2 = Random.Range(0, whaleGroupCoordinates.Count);
+        var index2 = Random.Range(0, seagullGroupCoordinates.Count);
         CreateGroup(seagullGroupCoordinates,seagullButtonList,seagullGroup,index2);
         seagullGroupCoordinates.Remove(seagullGroupCoordinates[index2]);
-        var index3 = Random.Range(0, whaleGroupCoordinates.Count);
+        var index3 = Random.Range(0, seaLionGroupCoordinates.Count);
         CreateGroup(seaLionGroupCoordinates,seaLionButtonList,seaLionGroup,index3);
         seaLionGroupCoordinates.Remove(seaLionGroupCoordinates[index3]);
         //var shuffledList = groupList.OrderBy(x => Random.value).ToList();
