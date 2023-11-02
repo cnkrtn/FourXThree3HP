@@ -21,24 +21,23 @@ public class PressKeyHandler : MonoBehaviour
     _gameManager = FindObjectOfType<GameManager>();
   }
 
+  private bool isKey;
   private void Update()
   {
-    if (Input.GetKeyDown((key)))
+    if (Input.GetKeyDown((key)) && !isKey)
     {
+      Debug.Log("down");
+      isKey = true;
       _gameManager.timer2 = 0;
       ColorChangeOnPress(_button.colors.pressedColor);
       _button.onClick?.Invoke();
     }
     else if (Input.GetKeyUp(key))
     {
+      Debug.Log("up");
+      isKey = false;
       ColorChangeOnPress(_button.colors.normalColor);
-    }
-
-    // if (timer >= 120)
-    // {
-    //   SceneManager.LoadScene(0);
-    // }
-    
+    }    
   }
 
   private void ColorChangeOnPress(Color color)
