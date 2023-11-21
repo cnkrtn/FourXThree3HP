@@ -770,6 +770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 82281915385724292, guid: 6580dfd5443e61b40bdfb3b85f3860a2, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114319760841125526, guid: 6580dfd5443e61b40bdfb3b85f3860a2, type: 3}
       propertyPath: outputDriverID
       value: 1
@@ -983,6 +987,10 @@ PrefabInstance:
     - target: {fileID: 4186790090005940, guid: 6580dfd5443e61b40bdfb3b85f3860a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82281915385724292, guid: 6580dfd5443e61b40bdfb3b85f3860a2, type: 3}
+      propertyPath: m_Volume
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114319760841125526, guid: 6580dfd5443e61b40bdfb3b85f3860a2, type: 3}
       propertyPath: outputDriverID
